@@ -28,8 +28,9 @@ jobs:
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
-          SOURCE_DIR: ./build
-          AWS_S3_BUCKET: ${{secrets.AWS_S3_BUCKET }} 
           AWS_REGION: ap-south-1
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      
+      - name: Upload Build to S3
+        run: aws s3 sync build s3://github-actions-deploy-s3/build      
