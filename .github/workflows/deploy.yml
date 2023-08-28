@@ -17,6 +17,17 @@ jobs:
         with:
           node-version: 14
 
+      - name: Check Python version
+        run: python3 --version
+
+      - name: Install AWS CLI and EB CLI
+        run: |
+          pip install awscli
+          pip install awsebcli --upgrade --user
+
+      - name: List installed packages
+        run: pip list
+
       - name: Install Dependencies
         run: npm install
 
