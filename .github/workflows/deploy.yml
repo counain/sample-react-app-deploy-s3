@@ -46,7 +46,7 @@ jobs:
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws configure set default.region ap-south-1
-          eb init Test-env ap-south-1
+          eb init Test-env --platform "IIS 10.0 running on 64bit Windows Server 2019"
 
       - name: Deploy to Elastic Beanstalk
         run: |
