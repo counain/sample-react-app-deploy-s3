@@ -18,7 +18,7 @@ jobs:
           git config --global user.email "syedcounain143@gmail.com"
 
       - name: Add Walmart's GitHub repository as a remote
-        run: git remote add walmart https://x-access-token:${{ secrets.WALMART_GITHUB_TOKEN }}@github.com/cou9/walmart-mirror-repo.git
+        run: git remote add walmart https://github.com/cou9/walmart-mirror-repo.git
 
       - name: Push changes to Walmart's GitHub repository
         run: |
