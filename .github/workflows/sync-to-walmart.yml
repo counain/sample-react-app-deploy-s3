@@ -3,25 +3,25 @@ name: Sync with Walmart's GitHub Repo
 on:
   push:
     branches:
-      - main  # This ensures it runs whenever you push to the 'main' branch.
+      - main  # Trigger only when code is pushed to 'main' branch
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code from your GitHub repository
+      - name: Checkout your repository code
         uses: actions/checkout@v2
 
-      - name: Set up Git configuration
+      - name: Configure Git user
         run: |
           git config --global user.name "counain"
           git config --global user.email "syedcounain143@gmail.com"
 
-      - name: Add Walmart's GitHub repository as a remote
-        run: git remote add walmart https://x-access-token:${{ secrets.WALMART_GITHUB_TOKEN }}@github.com/cou9/walmart-mirror-repo.git
-
-      - name: Push changes to Walmart's GitHub repository
+      - name: Add Walmart's GitHub repository as remote with authentication
         run: |
-          git push walmart main  # Change 'main' to the branch you want to sync with
-        env:
-          GITHUB_TOKEN: ${{ secrets.WALMART_GITHUB_TOKEN }}
+          git remote add walmart https://x-access-token:${{ secrets.WALMART_GITHUB_TOKEN }}@github.com/cou9/walmart-mirror-repo.git
+
+      - name: Push code to Walmart GitHub repository
+        run: |
+          git push walmart main
